@@ -7,30 +7,49 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
     class TextNodeTests
     {
         [Test]
+        public void TextNodeIDIsUnique()
+        {
+            TextNode textNode = new TextNode();
+            TextNode textNode2 = new TextNode();
+
+            Assert.That(textNode.ID, Is.Not.EqualTo(textNode2.ID));
+        }
+
+        [Test]
         public void TextNodeImplementsIGraphNode()
         {
-            IGraphNode textNode = new TextNode();
+            TextNode textNode = new TextNode();
             Assert.That(textNode, Is.Not.Null);
         }
 
         [Test]
         public void TextNodeContentDefaultsToEmptyString()
         {
-            IGraphNode textNode = new TextNode();
+            TextNode textNode = new TextNode();
             Assert.That(textNode.Content, Is.EqualTo(string.Empty));
         }
 
         [Test]
-        public void TextNodePositionDefaultsToZero()
+        public void TextNodeContentCanBeConstructed()
         {
-            IGraphNode textNode = new TextNode();
-            Assert.That(textNode.X, Is.Not.Null.And.EqualTo(0));
+            TextNode textNode = new TextNode("Hey There!");
+            Assert.That(textNode.Content, Is.Not.Null.And.EqualTo("Hey There!"));
+        }
+
+        [Test]
+        public void TextNodeContentConstructedToN()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                TextNode textNode = new TextNode($"Test: {i}");
+                Assert.That(textNode.Content, Is.Not.Null.And.EqualTo($"Test: {i}"));
+            }
         }
 
         [Test]
         public void TextNodeContentCanBeSet()
         {
-            IGraphNode textNode = new TextNode();
+            TextNode textNode = new TextNode();
 
             textNode.SetContent("Hello World");
 
@@ -38,52 +57,15 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
         }
 
         [Test]
-        public void TextNodeSizeCanBeSet()
+        public void TextNodeContentSetsToN()
         {
-            IGraphNode textNode = new TextNode();
-
-            textNode.SetSize(100, 100);
-
-            Assert.That(textNode.Width, Is.EqualTo(100));
-            Assert.That(textNode.Height, Is.EqualTo(100));
-        }
-
-        [Test]
-        public void TextNodeSizeSetToN()
-        {
-            IGraphNode textNode = new TextNode();
+            TextNode textNode = new TextNode();
 
             for (int i = 0; i < 10; i++)
             {
-                textNode.SetSize(i, i);
+                textNode.SetContent($"Test: {i}");
 
-                Assert.That(textNode.Width, Is.EqualTo(i));
-                Assert.That(textNode.Height, Is.EqualTo(i));
-            }
-        }
-
-        [Test]
-        public void TextNodePositionCanBeSet()
-        {
-            IGraphNode textNode = new TextNode();
-
-            textNode.SetPosition(100, 100);
-
-            Assert.That(textNode.X, Is.EqualTo(100));
-            Assert.That(textNode.Y, Is.EqualTo(100));
-        }
-
-        [Test]
-        public void TextNodePositionSetToN()
-        {
-            IGraphNode textNode = new TextNode();
-
-            for (int i = 0; i < 10; i++)
-            {
-                textNode.SetPosition(i, i);
-
-                Assert.That(textNode.X, Is.EqualTo(i));
-                Assert.That(textNode.Y, Is.EqualTo(i));
+                Assert.That(textNode.Content, Is.Not.Null.And.EqualTo($"Test: {i}"));
             }
         }
     }
