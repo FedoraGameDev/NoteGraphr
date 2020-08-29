@@ -1,4 +1,4 @@
-﻿using FedoraDev.NoteGraphr.Core.IDTrackers;
+﻿using FedoraDev.NoteGraphr.Core.UniqueID;
 using System;
 
 namespace FedoraDev.NoteGraphr.Core.GraphNode
@@ -13,7 +13,7 @@ namespace FedoraDev.NoteGraphr.Core.GraphNode
 
         public GraphNodeBase()
         {
-            ID = IDTracker.Add(this);
+            ID = UID.Add(this);
         }
 
         public void SetSize(int width, int height)
