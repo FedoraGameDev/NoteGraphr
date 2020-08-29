@@ -14,11 +14,22 @@
         <SolidColorBrush x:Key="PressedWindowCloseButtonForegroundBrush" Color="#FFF"/>
         <SolidColorBrush x:Key="WindowTextBrush" Color="#000" />
 
-        <Style x:Key="TitleBarMenuButtonStyle" TargetType="Button">
+        <Style x:Key="TitleBarMenuStyle" TargetType="Menu">
             <Setter Property="Foreground" Value="{DynamicResource WindowTextBrush}" />
             <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="32" />
+        </Style>
+
+        <Style x:Key="TitleBarMenuButtonStyle" TargetType="MenuItem">
+            <Setter Property="Foreground" Value="{DynamicResource WindowTextBrush}" />
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="10 0" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
         <Style x:Key="TitleBarButtonStyle" TargetType="Button">
