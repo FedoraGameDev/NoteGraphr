@@ -5,7 +5,7 @@ using Moq;
 namespace FedoraDev.NoteGraphr.Tests.Core.Graph
 {
     [TestFixture]
-    class GraphTests
+    class GraphSheetTests
     {
         GraphSheet graph;
 
