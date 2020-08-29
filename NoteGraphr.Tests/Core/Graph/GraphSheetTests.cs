@@ -1,18 +1,19 @@
 ﻿using FedoraDev.NoteGraphr.Core.Graph;
 using NUnit.Framework;
 using Moq;
+using FedoraDev.NoteGraphr.Core.UniqueID;
 
 namespace FedoraDev.NoteGraphr.Tests.Core.Graph
 {
     [TestFixture]
     class GraphSheetTests
     {
-        GraphSheet graph;
+        GraphSheet _graph;
 
         [SetUp]
         public void SetUp()
         {
-            graph = new GraphSheet();
+            _graph = new GraphSheet();
         }
 
         [Test]
@@ -21,9 +22,9 @@ namespace FedoraDev.NoteGraphr.Tests.Core.Graph
             Mock<IGraphable> mGraphable = new Mock<IGraphable>(MockBehavior.Strict);
             IGraphable graphable = mGraphable.Object;
 
-            graph.Add(graphable);
+            _graph.Add(graphable);
 
-            Assert.That(graph.Contains(graphable), Is.True);
+            Assert.That(_graph.Contains(graphable), Is.True);
         }
 
         [Test]
@@ -32,7 +33,7 @@ namespace FedoraDev.NoteGraphr.Tests.Core.Graph
             Mock<IGraphable> mGraphable = new Mock<IGraphable>(MockBehavior.Strict);
             IGraphable graphable = mGraphable.Object;
 
-            Assert.That(graph.Contains(graphable), Is.False);
+            Assert.That(_graph.Contains(graphable), Is.False);
         }
 
         [Test]
@@ -45,12 +46,12 @@ namespace FedoraDev.NoteGraphr.Tests.Core.Graph
                 Mock<IGraphable> mGraphable = new Mock<IGraphable>(MockBehavior.Strict);
                 graphables[i] = mGraphable.Object;
 
-                graph.Add(graphables[i]);
+                _graph.Add(graphables[i]);
             }
 
             for (int i = 0; i < graphables.Length; i++)
             {
-                Assert.That(graph.Contains(graphables[i]), Is.True);
+                Assert.That(_graph.Contains(graphables[i]), Is.True);
             }
         }
 
@@ -60,10 +61,22 @@ namespace FedoraDev.NoteGraphr.Tests.Core.Graph
             Mock<IGraphable> mGraphable = new Mock<IGraphable>(MockBehavior.Strict);
             IGraphable graphable = mGraphable.Object;
 
-            graph.Add(graphable);
-            graph.Remove(graphable);
+            _graph.Add(graphable);
+            _graph.Remove(graphable);
 
-            Assert.That(graph.Contains(graphable), Is.False);
+            Assert.That(_graph.Contains(graphable), Is.False);
+        }
+
+        [Test]
+        public void AddedToUID()
+        {
+            Assert.That(UID.Contains(_graph), Is.True);
+        }
+
+        [Test]
+        public void ContainsID()
+        {
+            Assert.That(_graph.ID, Is.Not.Null);
         }
     }
 }

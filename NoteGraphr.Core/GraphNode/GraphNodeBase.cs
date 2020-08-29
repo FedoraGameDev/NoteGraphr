@@ -1,11 +1,12 @@
-﻿using FedoraDev.NoteGraphr.Core.UniqueID;
+﻿using FedoraDev.NoteGraphr.Core.Graph;
+using FedoraDev.NoteGraphr.Core.UniqueID;
 using System;
 
 namespace FedoraDev.NoteGraphr.Core.GraphNode
 {
-    public abstract class GraphNodeBase
+    public abstract class GraphNodeBase : IGraphable
     {
-        public uint ID { get; private set; }
+        public uint ID { get; }
         public int Width { get; private set; } = 4;
         public int Height { get; private set; } = 1;
         public int X { get; private set; } = 0;
@@ -13,7 +14,7 @@ namespace FedoraDev.NoteGraphr.Core.GraphNode
 
         public GraphNodeBase()
         {
-            ID = UID.Add(this);
+            ID = UID.AddAndGetID(this);
         }
 
         public void SetSize(int width, int height)

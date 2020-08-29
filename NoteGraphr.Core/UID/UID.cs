@@ -5,15 +5,25 @@ namespace FedoraDev.NoteGraphr.Core.UniqueID
 {
     public static class UID
     {
-        private static readonly Dictionary<uint, Object> _storage = new Dictionary<uint, object>();
+        private static readonly Dictionary<uint, object> _storage = new Dictionary<uint, object>();
         private static uint _nextID = 0;
 
-        public static uint Add<T>(T obj)
+        public static uint AddAndGetID<T>(T obj)
         {
+            Add(obj);
             uint id = _nextID;
-            _storage.Add(id, obj);
-            _nextID = GetNextAvailableID();
+            SetNextAvailableID();
             return id;
+        }
+
+        static void Add<T>(T obj)
+        {
+            _storage.Add(_nextID, obj);
+        }
+
+        public static bool Contains<T>(T obj)
+        {
+            return _storage.ContainsValue(obj);
         }
 
         public static T TryToGet<T>(uint id) where T: class
@@ -30,14 +40,10 @@ namespace FedoraDev.NoteGraphr.Core.UniqueID
                 _nextID = id;
         }
 
-        static uint GetNextAvailableID()
+        static void SetNextAvailableID()
         {
-            uint i = _nextID;
-
-            while (_storage.ContainsKey(i))
-                i++;
-
-            return i;
+            while (_storage.ContainsKey(_nextID))
+                _nextID++;
         }
     }
 }

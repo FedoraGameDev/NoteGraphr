@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using FedoraDev.NoteGraphr.Core.GraphNode;
 using Moq;
+using FedoraDev.NoteGraphr.Core.Graph;
 
 namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
 {
@@ -158,6 +159,15 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
                 Assert.That(graphNode.X, Is.EqualTo(50 + i));
                 Assert.That(graphNode.Y, Is.EqualTo(50 + i));
             }
+        }
+
+        [Test]
+        public void GraphNodeCanBeAddedToGraphSheet()
+        {
+            GraphSheet graph = new GraphSheet();
+            graph.Add(graphNode);
+
+            Assert.That(graph.Contains(graphNode), Is.True);
         }
     }
 }

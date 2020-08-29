@@ -24,7 +24,7 @@ namespace FedoraDev.NoteGraphr
         {
             InitializeComponent();
 
-            this.Title = "Hello Title!";
+            Title = "NoteGraphr - Untitled";
         }
     }
 }

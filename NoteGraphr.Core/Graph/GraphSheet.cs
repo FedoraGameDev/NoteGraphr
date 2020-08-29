@@ -1,26 +1,32 @@
-﻿using System;
+﻿using FedoraDev.NoteGraphr.Core.UniqueID;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FedoraDev.NoteGraphr.Core.Graph
 {
     public class GraphSheet
     {
-        List<IGraphable> storage = new List<IGraphable>();
+        public uint ID { get; }
+
+        private List<IGraphable> _storage = new List<IGraphable>();
+
+        public GraphSheet()
+        {
+            ID = UID.AddAndGetID(this);
+        }
 
         public void Add(IGraphable graphable)
         {
-            storage.Add(graphable);
+            _storage.Add(graphable);
         }
 
         public bool Contains(IGraphable graphable)
         {
-            return storage.Contains(graphable);
+            return _storage.Contains(graphable);
         }
 
         public void Remove(IGraphable graphable)
         {
-            storage.Remove(graphable);
+            _storage.Remove(graphable);
         }
     }
 }

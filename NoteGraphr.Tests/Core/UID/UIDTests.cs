@@ -12,14 +12,23 @@ namespace FedoraDev.NoteGraphr.Tests.Core.UniqueID
         [Test]
         public void AcceptsObject()
         {
-            UID.Add(new TestBox());
+            UID.AddAndGetID(new TestBox());
             Assert.That(true, Is.True);
+        }
+
+        [Test]
+        public void TellIfContainsAnObject()
+        {
+            TestBox box = new TestBox();
+            UID.AddAndGetID(box);
+
+            Assert.That(UID.Contains(box), Is.True);
         }
 
         [Test]
         public void ReturnsAnID()
         {
-            uint id = UID.Add(new TestBox());
+            uint id = UID.AddAndGetID(new TestBox());
             Assert.That(id, Is.Not.Null);
         }
 
@@ -27,7 +36,7 @@ namespace FedoraDev.NoteGraphr.Tests.Core.UniqueID
         public void ReturnsAnObjectGivenItsID()
         {
             TestBox box = new TestBox();
-            uint id = UID.Add(box);
+            uint id = UID.AddAndGetID(box);
 
             TestBox retBox = UID.TryToGet<TestBox>(id);
 
@@ -43,7 +52,7 @@ namespace FedoraDev.NoteGraphr.Tests.Core.UniqueID
             for (int i = 0; i < 5; i++)
             {
                 boxes[i] = new TestBox();
-                ids[i] = UID.Add(boxes[i]);
+                ids[i] = UID.AddAndGetID(boxes[i]);
             }
 
             for (int i = 0; i < 5; i++)
@@ -56,7 +65,7 @@ namespace FedoraDev.NoteGraphr.Tests.Core.UniqueID
         [Test]
         public void ReturnsNullIfTypeMismatch()
         {
-            uint id = UID.Add(new TestBox());
+            uint id = UID.AddAndGetID(new TestBox());
             TestCircle circle = UID.TryToGet<TestCircle>(id);
             Assert.That(circle, Is.Null);
         }
@@ -64,7 +73,7 @@ namespace FedoraDev.NoteGraphr.Tests.Core.UniqueID
         [Test]
         public void CanFreeIDs()
         {
-            uint id = UID.Add(new TestBox());
+            uint id = UID.AddAndGetID(new TestBox());
             UID.Remove(id);
             Assert.That(UID.TryToGet<TestBox>(id), Is.Null);
         }
@@ -79,31 +88,31 @@ namespace FedoraDev.NoteGraphr.Tests.Core.UniqueID
         [Test]
         public void FreedIDIsUsedOnNextObject()
         {
-            uint id1 = UID.Add(new TestBox());
+            uint id1 = UID.AddAndGetID(new TestBox());
             UID.Remove(id1);
-            uint id2 = UID.Add(new TestBox());
+            uint id2 = UID.AddAndGetID(new TestBox());
             Assert.That(id1, Is.EqualTo(id2));
         }
 
         [Test]
         public void AssigningSameIDToNewObjectDoesNotForceIDOverlapOnNext()
         {
-            uint id1 = UID.Add(new TestBox());
-            uint id2 = UID.Add(new TestBox());
+            uint id1 = UID.AddAndGetID(new TestBox());
+            uint id2 = UID.AddAndGetID(new TestBox());
             UID.Remove(id1);
-            uint id3 = UID.Add(new TestBox());
-            uint id4 = UID.Add(new TestBox());
+            uint id3 = UID.AddAndGetID(new TestBox());
+            uint id4 = UID.AddAndGetID(new TestBox());
             Assert.That(id2, Is.Not.EqualTo(id4));
         }
 
         [Test]
         public void FreeingAnIDHigherThanNextAvailableIDDoesNotChangeNextID()
         {
-            uint id1 = UID.Add(new TestBox());
-            uint id2 = UID.Add(new TestBox());
+            uint id1 = UID.AddAndGetID(new TestBox());
+            uint id2 = UID.AddAndGetID(new TestBox());
             UID.Remove(id1);
             UID.Remove(id2);
-            uint id3 = UID.Add(new TestBox());
+            uint id3 = UID.AddAndGetID(new TestBox());
             Assert.That(id3, Is.EqualTo(id1));
         }
     }
