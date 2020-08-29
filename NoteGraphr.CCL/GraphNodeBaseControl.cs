@@ -20,14 +20,14 @@ namespace NoteGraphr.CCL
     /// Add this XmlNamespace attribute to the root element of the markup file where it is 
     /// to be used:
     ///
-    ///     xmlns:MyNamespace="clr-namespace:NoteGraphr.CCL"
+    ///     xmlns:MyNamespace="clr-namespace:FedoraDev.NoteGraphr.CCL"
     ///
     ///
     /// Step 1b) Using this custom control in a XAML file that exists in a different project.
     /// Add this XmlNamespace attribute to the root element of the markup file where it is 
     /// to be used:
     ///
-    ///     xmlns:MyNamespace="clr-namespace:NoteGraphr.CCL;assembly=NoteGraphr.CCL"
+    ///     xmlns:MyNamespace="clr-namespace:FedoraDev.NoteGraphr.CCL;assembly=NoteGraphr.CCL"
     ///
     /// You will also need to add a project reference from the project where the XAML file lives
     /// to this project and Rebuild to avoid compilation errors:

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FedoraDev.NoteGraphr.Core.GraphNode
+namespace NoteGraphr.Core.GraphNode
 {
     public class TextNode : GraphNodeBase
     {

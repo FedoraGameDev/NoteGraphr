@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using FedoraDev.NoteGraphr.Core.UniqueID;
+using NoteGraphr.Core.UniqueID;
 
-namespace FedoraDev.NoteGraphr.Tests.Core.UniqueID
+namespace NoteGraphr.Tests.Core.UniqueID
 {
     class TestBox { }
     class TestCircle { }

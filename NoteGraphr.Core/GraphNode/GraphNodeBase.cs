@@ -1,8 +1,8 @@
-﻿using FedoraDev.NoteGraphr.Core.Graph;
-using FedoraDev.NoteGraphr.Core.UniqueID;
+﻿using NoteGraphr.Core.Graph;
+using NoteGraphr.Core.UniqueID;
 using System;
 
-namespace FedoraDev.NoteGraphr.Core.GraphNode
+namespace NoteGraphr.Core.GraphNode
 {
     public abstract class GraphNodeBase : IGraphable
     {

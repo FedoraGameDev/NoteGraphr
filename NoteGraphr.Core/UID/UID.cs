@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace FedoraDev.NoteGraphr.Core.UniqueID
+namespace NoteGraphr.Core.UniqueID
 {
     public static class UID
     {

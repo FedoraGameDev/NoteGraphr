@@ -1,9 +1,9 @@
-﻿using FedoraDev.NoteGraphr.Core.Graph;
+﻿using NoteGraphr.Core.Graph;
 using NUnit.Framework;
 using Moq;
-using FedoraDev.NoteGraphr.Core.UniqueID;
+using NoteGraphr.Core.UniqueID;
 
-namespace FedoraDev.NoteGraphr.Tests.Core.Graph
+namespace NoteGraphr.Tests.Core.Graph
 {
     [TestFixture]
     class GraphSheetTests

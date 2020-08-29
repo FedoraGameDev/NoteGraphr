@@ -1,7 +1,7 @@
-﻿using FedoraDev.NoteGraphr.Core.GraphNode;
+﻿using NoteGraphr.Core.GraphNode;
 using NUnit.Framework;
 
-namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
+namespace NoteGraphr.Tests.Core.GraphNode
 {
     [TestFixture]
     class TextNodeTests

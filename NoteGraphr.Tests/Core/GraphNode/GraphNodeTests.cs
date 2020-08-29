@@ -1,25 +1,25 @@
 ﻿using NUnit.Framework;
-using FedoraDev.NoteGraphr.Core.GraphNode;
+using NoteGraphr.Core.GraphNode;
 using Moq;
-using FedoraDev.NoteGraphr.Core.Graph;
+using NoteGraphr.Core.Graph;
 
-namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
+namespace NoteGraphr.Tests.Core.GraphNode
 {
     [TestFixture]
     class GraphNodeTests
     {
-        GraphNodeBase graphNode;
+        GraphNodeBase _graphNode;
 
         [SetUp]
         public void SetUp()
         {
-            graphNode = new Mock<GraphNodeBase>(MockBehavior.Strict).Object;
+            _graphNode = new Mock<GraphNodeBase>(MockBehavior.Strict).Object;
         }
 
         [Test]
         public void GraphNodeBaseHasID()
         {
-            Assert.That(graphNode.ID, Is.Not.Null);
+            Assert.That(_graphNode.ID, Is.Not.Null);
         }
 
         [Test]
@@ -27,37 +27,37 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
         {
             GraphNodeBase graphNode2 = new Mock<GraphNodeBase>(MockBehavior.Strict).Object;
 
-            Assert.That(graphNode.ID, Is.Not.EqualTo(graphNode2.ID));
+            Assert.That(_graphNode.ID, Is.Not.EqualTo(graphNode2.ID));
         }
 
         [Test]
         public void GraphNodeBaseHasPosition()
         {
-            Assert.That(graphNode.X, Is.Not.Null.And.EqualTo(0));
-            Assert.That(graphNode.Y, Is.Not.Null.And.EqualTo(0));
+            Assert.That(_graphNode.X, Is.Not.Null.And.EqualTo(0));
+            Assert.That(_graphNode.Y, Is.Not.Null.And.EqualTo(0));
         }
 
         [Test]
         public void GraphNodeBaseHasSize()
         {
-            Assert.That(graphNode.Width, Is.Not.Null);
-            Assert.That(graphNode.Height, Is.Not.Null);
+            Assert.That(_graphNode.Width, Is.Not.Null);
+            Assert.That(_graphNode.Height, Is.Not.Null);
         }
 
         [Test]
         public void GraphNodeBaseSizeDefaultsAwayFromZero()
         {
-            Assert.That(graphNode.Width, Is.Not.EqualTo(0));
-            Assert.That(graphNode.Height, Is.Not.EqualTo(0));
+            Assert.That(_graphNode.Width, Is.Not.EqualTo(0));
+            Assert.That(_graphNode.Height, Is.Not.EqualTo(0));
         }
 
         [Test]
         public void GraphNodeBaseSizeCanBeSet()
         {
-            graphNode.SetSize(100, 100);
+            _graphNode.SetSize(100, 100);
 
-            Assert.That(graphNode.Width, Is.EqualTo(100));
-            Assert.That(graphNode.Height, Is.EqualTo(100));
+            Assert.That(_graphNode.Width, Is.EqualTo(100));
+            Assert.That(_graphNode.Height, Is.EqualTo(100));
         }
 
         [Test]
@@ -65,21 +65,21 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
         {
             for (int i = 0; i < 10; i++)
             {
-                graphNode.SetSize(i, i);
+                _graphNode.SetSize(i, i);
 
-                Assert.That(graphNode.Width, Is.EqualTo(i));
-                Assert.That(graphNode.Height, Is.EqualTo(i));
+                Assert.That(_graphNode.Width, Is.EqualTo(i));
+                Assert.That(_graphNode.Height, Is.EqualTo(i));
             }
         }
 
         [Test]
         public void GraphNodeBaseSizeCanGrow()
         {
-            graphNode.SetSize(1, 1);
-            graphNode.Grow(2, 5);
+            _graphNode.SetSize(1, 1);
+            _graphNode.Grow(2, 5);
 
-            Assert.That(graphNode.Width, Is.EqualTo(3));
-            Assert.That(graphNode.Height, Is.EqualTo(6));
+            Assert.That(_graphNode.Width, Is.EqualTo(3));
+            Assert.That(_graphNode.Height, Is.EqualTo(6));
         }
 
         [Test]
@@ -87,43 +87,43 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
         {
             for (int i = -10; i < 10; i++)
             {
-                graphNode.SetSize(15, 15);
-                graphNode.Grow(i, i);
+                _graphNode.SetSize(15, 15);
+                _graphNode.Grow(i, i);
 
-                Assert.That(graphNode.Width, Is.EqualTo(15 + i));
-                Assert.That(graphNode.Height, Is.EqualTo(15 + i));
+                Assert.That(_graphNode.Width, Is.EqualTo(15 + i));
+                Assert.That(_graphNode.Height, Is.EqualTo(15 + i));
             }
         }
 
         [Test]
         public void GraphNodeBaseSizeDoesNotBecomeLessThanOne()
         {
-            graphNode.SetSize(1, 1);
-            graphNode.Grow(-1, -1);
+            _graphNode.SetSize(1, 1);
+            _graphNode.Grow(-1, -1);
 
-            Assert.That(graphNode.Width, Is.EqualTo(1));
-            Assert.That(graphNode.Height, Is.EqualTo(1));
+            Assert.That(_graphNode.Width, Is.EqualTo(1));
+            Assert.That(_graphNode.Height, Is.EqualTo(1));
 
-            graphNode.Grow(-100, -100);
+            _graphNode.Grow(-100, -100);
 
-            Assert.That(graphNode.Width, Is.EqualTo(1));
-            Assert.That(graphNode.Height, Is.EqualTo(1));
+            Assert.That(_graphNode.Width, Is.EqualTo(1));
+            Assert.That(_graphNode.Height, Is.EqualTo(1));
         }
 
         [Test]
         public void GraphNodeBasePositionDefaultsToZero()
         {
-            Assert.That(graphNode.X, Is.Not.Null.And.EqualTo(0));
-            Assert.That(graphNode.Y, Is.Not.Null.And.EqualTo(0));
+            Assert.That(_graphNode.X, Is.Not.Null.And.EqualTo(0));
+            Assert.That(_graphNode.Y, Is.Not.Null.And.EqualTo(0));
         }
 
         [Test]
         public void GraphNodeBasePositionCanBeSet()
         {
-            graphNode.SetPosition(100, 100);
+            _graphNode.SetPosition(100, 100);
 
-            Assert.That(graphNode.X, Is.EqualTo(100));
-            Assert.That(graphNode.Y, Is.EqualTo(100));
+            Assert.That(_graphNode.X, Is.EqualTo(100));
+            Assert.That(_graphNode.Y, Is.EqualTo(100));
         }
 
         [Test]
@@ -131,21 +131,21 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
         {
             for (int i = 0; i < 10; i++)
             {
-                graphNode.SetPosition(i, i);
+                _graphNode.SetPosition(i, i);
 
-                Assert.That(graphNode.X, Is.EqualTo(i));
-                Assert.That(graphNode.Y, Is.EqualTo(i));
+                Assert.That(_graphNode.X, Is.EqualTo(i));
+                Assert.That(_graphNode.Y, Is.EqualTo(i));
             }
         }
 
         [Test]
         public void GraphNodeBaseCanBeMoved()
         {
-            graphNode.SetPosition(50, 50);
-            graphNode.Move(5, 5);
+            _graphNode.SetPosition(50, 50);
+            _graphNode.Move(5, 5);
 
-            Assert.That(graphNode.X, Is.EqualTo(55));
-            Assert.That(graphNode.Y, Is.EqualTo(55));
+            Assert.That(_graphNode.X, Is.EqualTo(55));
+            Assert.That(_graphNode.Y, Is.EqualTo(55));
         }
 
         [Test]
@@ -153,11 +153,11 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
         {
             for (int i = -10; i < 10; i++)
             {
-                graphNode.SetPosition(50, 50);
-                graphNode.Move(i, i);
+                _graphNode.SetPosition(50, 50);
+                _graphNode.Move(i, i);
 
-                Assert.That(graphNode.X, Is.EqualTo(50 + i));
-                Assert.That(graphNode.Y, Is.EqualTo(50 + i));
+                Assert.That(_graphNode.X, Is.EqualTo(50 + i));
+                Assert.That(_graphNode.Y, Is.EqualTo(50 + i));
             }
         }
 
@@ -165,9 +165,9 @@ namespace FedoraDev.NoteGraphr.Tests.Core.GraphNode
         public void GraphNodeCanBeAddedToGraphSheet()
         {
             GraphSheet graph = new GraphSheet();
-            graph.Add(graphNode);
+            graph.Add(_graphNode);
 
-            Assert.That(graph.Contains(graphNode), Is.True);
+            Assert.That(graph.Contains(_graphNode), Is.True);
         }
     }
 }

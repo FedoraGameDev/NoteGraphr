@@ -1,4 +1,4 @@
-﻿namespace FedoraDev.NoteGraphr.Core.GraphNode
+﻿namespace NoteGraphr.Core.GraphNode
 {
     public class EmptyGraphNode : GraphNodeBase { }
 }

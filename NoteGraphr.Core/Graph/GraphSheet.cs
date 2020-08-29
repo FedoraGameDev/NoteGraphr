@@ -1,7 +1,7 @@
-﻿using FedoraDev.NoteGraphr.Core.UniqueID;
+﻿using NoteGraphr.Core.UniqueID;
 using System.Collections.Generic;
 
-namespace FedoraDev.NoteGraphr.Core.Graph
+namespace NoteGraphr.Core.Graph
 {
     public class GraphSheet
     {
