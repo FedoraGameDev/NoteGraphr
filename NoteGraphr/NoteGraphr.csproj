@@ -7,8 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icons\stack black.png" />
+    <None Remove="icons\stack white.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NoteGraphr.CCL\NoteGraphr.CCL.csproj" />
     <ProjectReference Include="..\NoteGraphr.Core\NoteGraphr.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\stack black.png" />
+    <Resource Include="icons\stack white.png" />
   </ItemGroup>
 
 </Project>

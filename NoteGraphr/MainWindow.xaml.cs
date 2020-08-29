@@ -25,6 +25,28 @@ namespace NoteGraphr
             InitializeComponent();
 
             Title = "NoteGraphr - Untitled";
+            StateChanged += WindowStateChanged;
+            WindowStateChanged(this, null);
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
+
+        private void RefreshMaximizeRestoreButton()
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                maximizeButton.Visibility = Visibility.Collapsed;
+                restoreButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                maximizeButton.Visibility = Visibility.Visible;
+                restoreButton.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        public void OnMinimizeButtonClick(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+        public void OnMaximizeRestoreButtonClick(object sender, RoutedEventArgs e) => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        public void OnCloseButtonClick(object sender, RoutedEventArgs e) => Close();
+        public void WindowStateChanged(object sender, EventArgs e) => RefreshMaximizeRestoreButton();
     }
 }
