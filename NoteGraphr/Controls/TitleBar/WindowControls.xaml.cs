@@ -1,0 +1,38 @@
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace NoteGraphr.Controls.TitleBar
+{
+    public partial class WindowControls : UserControl
+    {
+        private Window _window = Application.Current.MainWindow;
+
+        public WindowControls()
+        {
+            InitializeComponent();
+            _window.StateChanged += WindowStateChanged;
+            WindowStateChanged(this, null);
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+        }
+
+        private void RefreshMaximizeRestoreButton()
+        {
+            if (_window.WindowState == WindowState.Maximized)
+            {
+                maximizeButton.Visibility = Visibility.Collapsed;
+                restoreButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                maximizeButton.Visibility = Visibility.Visible;
+                restoreButton.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        public void OnMinimizeButtonClick(object sender, RoutedEventArgs e) => _window.WindowState = WindowState.Minimized;
+        public void OnMaximizeRestoreButtonClick(object sender, RoutedEventArgs e) => _window.WindowState = _window.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+        public void OnCloseButtonClick(object sender, RoutedEventArgs e) => _window.Close();
+        public void WindowStateChanged(object sender, EventArgs e) => RefreshMaximizeRestoreButton();
+    }
+}
