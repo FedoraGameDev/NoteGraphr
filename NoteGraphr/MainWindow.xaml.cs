@@ -9,6 +9,7 @@ namespace NoteGraphr
             InitializeComponent();
 
             Title = "NoteGraphr - Untitled";
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
     }
 }

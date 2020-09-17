@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="NoteGraphr.Controls.ContentBox.ContentBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:NoteGraphr.Controls.ContentBox" xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+    <UserControl.Resources>
+        <System:Double x:Key="dockWidth">80</System:Double>
+        <System:Double x:Key="buttonWidth">65</System:Double>
+    </UserControl.Resources>
+
+    <Grid>
+        <DockPanel>
+            <Grid DockPanel.Dock="Left" Width="{StaticResource dockWidth}" Style="{StaticResource ContentStyle}">
+                <ListBox Background="#232323" BorderThickness="0 0 1 0" BorderBrush="{StaticResource DarkAccent}">
+                    <ListBoxItem>
+                        <TextBlock TextAlignment="Center" Width="{StaticResource buttonWidth}" Foreground="White">
+                            <Path Stroke="White" Fill="{StaticResource DarkAccent}"
+                                    Data="M 1,1 l 0,30 l 50,0 l 0,-30 Z M 10,10 l 30,0 M 10,15 l 30,0 M 10,20 l 25,0" />
+                            <LineBreak />
+                            Hello
+                        </TextBlock>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <Button Width="{StaticResource buttonWidth}">Link</Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <Button Width="{StaticResource buttonWidth}">To-Do</Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <Button Width="{StaticResource buttonWidth}">Line</Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <Button Width="{StaticResource buttonWidth}">Board</Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <Button Width="{StaticResource buttonWidth}">Column</Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <Button Width="{StaticResource buttonWidth}">Comment</Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <TextBlock TextAlignment="Center" Width="{StaticResource buttonWidth}">
+                            ------------
+                        </TextBlock>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <Button Width="{StaticResource buttonWidth}">Add Image</Button>
+                    </ListBoxItem>
+
+                    <ListBoxItem>
+                        <Button Width="{StaticResource buttonWidth}">Upload File</Button>
+                    </ListBoxItem>
+                </ListBox>
+            </Grid>
+            <Grid>
+                <TextBlock>Hello</TextBlock>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

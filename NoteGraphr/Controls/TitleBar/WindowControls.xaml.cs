@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -6,14 +7,16 @@ namespace NoteGraphr.Controls.TitleBar
 {
     public partial class WindowControls : UserControl
     {
-        private Window _window = Application.Current.MainWindow;
+        private Window _window;
 
         public WindowControls()
         {
             InitializeComponent();
+            if (DesignerProperties.GetIsInDesignMode(this))
+                return;
+            _window = Application.Current.MainWindow;
             _window.StateChanged += WindowStateChanged;
             WindowStateChanged(this, null);
-            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
 
         private void RefreshMaximizeRestoreButton()

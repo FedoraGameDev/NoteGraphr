@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:NoteGraphr.Controls.TitleBar"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             VerticalAlignment="Stretch">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -15,7 +16,7 @@
                Width="22"
                Height="22"
                Margin="4"
-               Source="/icons/stack black.png" />
+               Source="/icons/stack white.png" />
 
         <Menu Grid.Column="1"
               VerticalAlignment="Center"
